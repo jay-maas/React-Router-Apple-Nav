@@ -1,14 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
+import Icon from './Assets/svgImages/svgIndex';
 import './App.css';
+
+const styles = {
+  display: "flex",
+  flexWrap: "wrap",
+  alignItems: "center",
+  fontFamily: "sans-serif",
+  justifyContent: "space-between"
+};
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <div style={styles}>
+        <Icon name="watchOsLogo" fill={"white"}
+        width={100}
+        />
+      </div>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Welcome to my CRA Apple Nav Stretch Project
         </p>
         <a
           className="App-link"
