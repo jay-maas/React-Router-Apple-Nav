@@ -1,37 +1,37 @@
 import React from 'react';
-import Icon from './Assets/svgImages/svgIndex';
-import './App.css';
+import { Route } from "react-router-dom";
+import styled from 'styled-components';
 
-const styles = {
-  display: "flex",
-  flexWrap: "wrap",
-  alignItems: "center",
-  fontFamily: "sans-serif",
-  justifyContent: "space-between"
-};
+import Nav from './Components/Nav';
+import * as ROUTES from './routes.js';
+
+const AppContainer = styled.div`
+  width: 100%;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-      <div style={styles}>
-        <Icon name="watchOsLogo" fill={"white"}
-        width={100}
-        />
+    <AppContainer>
+      <Nav />
+      <div>
+        {ROUTES.mainRoutes.map((route, index) => (
+            <Route
+              key={index}
+              path={route.path}
+              exact={route.exact}
+              component={route.subnav}
+            />
+          ))}
       </div>
-        <p>
-          Welcome to my CRA Apple Nav Stretch Project
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      {ROUTES.subRoutes.map((route, index) => (
+          <Route
+            key={index}
+            path={route.path}
+            exact={route.exact}
+            component={route.content}
+          />
+        ))}
+    </AppContainer>
   );
 }
 
